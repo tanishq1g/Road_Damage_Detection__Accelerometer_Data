@@ -15,6 +15,26 @@ We collected the data while riding a bike, we kept the bike speed constant at 30
 
 /Collecting your own data is fun, try it sometimes :)/
 
+## Approach
+We need to identify sudden changes in the x, y and z axis of the accelerometers to identify bumps and potholes on the roads. 
+
+We can take magnitude of all the axis for a better insight and trim out the length of the signal to a standard length. * We then remove the gravitational acceleration from our data by removing the average. This should work as ‘g’ is constant. We then apply a moving average filter to smoothen out the signal. This helps us identify the peaks easily as it will remove erroneous fluctuations. 
+After calculating the moving average values, we will observe some peaks in the signal data. 
+
+We will then set a threshold level which is our reference point for peak detection. Any data point above this threshold value would be considered a pothole/broken road etc, meaning bad road conditions. This threshold value is max/2 and min/2 . Any value more than max/2 and less than min/2 are labeled as perfect peaks which will help us rank the roads based on the damage. 
+
+Depending on the number of peak values which are above our threshold, we’ll rank our roads. We see that the peak distribution plot is very similar to the inverse of our road ranks (because the better the rank, the better the road) 
+
+So what we infer is that accelerometer data can properly capture the disturbances in the roads. 
+
+The threshold level and peak-count value to ranking can be adjusted to match the labels we assigned to our raw data but adjusting these values manually isn’t a very intelligent way of analyzing signals, so we’ll let a ML model like linear regression do it. 
+
+## Training
+We split our data into train and test data. The data contains name of the road and the corresponding rank. We use a basic regression model like LinearRegression to predict road ranks with the help of peak counts. On training, we get a **logarithmic loss of around 0.56**, which is actually pretty decent given the mode of data collection. 
+
+
+
+
 
 
 
