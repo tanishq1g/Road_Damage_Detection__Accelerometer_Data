@@ -13,7 +13,7 @@ Typical accelerometers are made up of multiple axes, two to determine most two-d
 
 We collected the data while riding a bike, we kept the bike speed constant at 30 m/s. We roamed in and around Electronic City,  Bangalore.  The dataset contains signal data from 14 different roads like ISBR road, Wipro village road, BSNL road etc.  To rank the roads, we used a scoring scale from 0 to 10 with 0 being the worst road and 10 being the best. Scores were assigned using the images we took for each road and the bike riding experience.
 
-/Collecting your own data is fun, try it sometimes :)/
+/*Collecting your own data is fun, try it sometimes :)*/
 
 ## Approach
 We need to identify sudden changes in the x, y and z axis of the accelerometers to identify bumps and potholes on the roads. 
